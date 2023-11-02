@@ -9,6 +9,7 @@ import warnings
 from typing import Iterable, Iterator
 
 from cereal import log as capnp_log
+from openpilot.selfdrive.test.openpilotci import get_url
 from openpilot.tools.lib.filereader import FileReader
 from openpilot.tools.lib.route import Route, SegmentName
 
@@ -128,6 +129,11 @@ def logreader_from_route_or_segment(r, sort_by_time=False):
     return MultiLogIterator(route.log_paths(), sort_by_time=sort_by_time)
   else:
     return LogReader(route.log_paths()[sn.segment_num], sort_by_time=sort_by_time)
+
+
+def logreader_from_ci_seg(ci_seg, sort_by_time):
+  segment, lr_dat = get_log_data(ci_seg)
+  return LogReader.from_bytes(lr_dat)
 
 
 if __name__ == "__main__":
