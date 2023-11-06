@@ -22,7 +22,6 @@ public:
   }
 
   static void config_cpu_rendering() {
-    setenv("QT_QPA_PLATFORM", "offscreen", 1);
     setenv("__GLX_VENDOR_LIBRARY_NAME", "mesa", 1);
   }
 };
