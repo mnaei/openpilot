@@ -17,19 +17,13 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-if [ -n "$PUSH_IMAGE" ]; then
-  GHA_CACHE="--cache-to type=gha --cache-from type=gha" # local (branch) caching only
-else
-  GHA_CACHE="--cache-to type=gha,scope=global --cache-from type=gha,scope=global" # global cache
-fi
-
-docker buildx create --use
 docker buildx build --platform $PLATFORM --load \
   --cache-to type=registry,ref=$REMOTE_CACHE_TAG --cache-from type=registry,ref=$REMOTE_CACHE_TAG \
-  $GHA_CACHE -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+  -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 if [ -n "$PUSH_IMAGE" ]; then
   docker push $REMOTE_TAG
   docker tag $REMOTE_TAG $REMOTE_SHA_TAG
   docker push $REMOTE_SHA_TAG
+  docker push $REMOTE_CACHE_TAG
 fi
