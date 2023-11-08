@@ -26,5 +26,6 @@ public:
       setenv("QT_QPA_PLATFORM", "offscreen", 1);
     }
     setenv("__GLX_VENDOR_LIBRARY_NAME", "mesa", 1);
+    setenv("LP_NUM_THREADS", "0", 1); // disable threading so we stay on our assigned CPU
   }
 };
