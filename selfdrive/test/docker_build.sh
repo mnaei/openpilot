@@ -18,10 +18,10 @@ fi
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
 if [ -n "$PUSH_IMAGE" ]; then
-  #GHA_CACHE="--cache-to type=gha --cache-from type=gha" # local (branch) caching only
+  GHA_CACHE="--cache-to type=gha --cache-from type=gha" # local (branch) caching only
   REG_CACHE="--cache-to type=registry,ref=$REMOTE_CACHE_TAG"
 else
-  #GHA_CACHE="--cache-to type=gha,scope=global --cache-from type=gha,scope=global" # global cache
+  GHA_CACHE="--cache-to type=gha,scope=global --cache-from type=gha,scope=global" # global cache
   REG_CACHE=""
 fi
 
