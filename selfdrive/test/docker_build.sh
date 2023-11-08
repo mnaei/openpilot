@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-docker buildx build --platform $PLATFORM --load \
+DOCKER_BUILDKIT=1 docker buildx build --platform $PLATFORM --load \
   --cache-to type=registry,ref=$REMOTE_CACHE_TAG --cache-from type=registry,ref=$REMOTE_CACHE_TAG \
   -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
