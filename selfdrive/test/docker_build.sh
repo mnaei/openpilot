@@ -27,7 +27,7 @@ fi
 
 DOCKER_BUILDKIT=1 docker buildx build --platform $PLATFORM --load \
   --cache-from type=registry,ref=$REMOTE_CACHE_TAG \
-  --cache-from type=registry,ref=$REMOTE_TAG
+  --cache-from type=registry,ref=$REMOTE_TAG \
   $GHA_CACHE $REG_CACHE \
   -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
