@@ -783,6 +783,7 @@ FW_VERSIONS = {
       b'37805-5PD-Q630\x00\x00',
       b'37805-5PF-F730\x00\x00',
       b'37805-5PF-M630\x00\x00',
+      b'37805-5PA-AE30\x00\x00',
     ],
     (Ecu.transmission, 0x18da1ef1, None): [
       b'28101-5RG-A020\x00\x00',
@@ -839,6 +840,7 @@ FW_VERSIONS = {
       b'78109-TMC-Q210\x00\x00',
       b'78109-TMM-F210\x00\x00',
       b'78109-TMM-M110\x00\x00',
+      b'78109-TLA-A020\x00\x00',
     ],
     (Ecu.gateway, 0x18daeff1, None): [
       b'38897-TLA-A010\x00\x00',
